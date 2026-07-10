@@ -1,0 +1,56 @@
+scoring:
+  weights:
+    schedule_slippage: 0.35
+    milestone_health: 0.25
+    blocker_density: 0.25
+    dependency_risk: 0.15
+
+  thresholds:
+    schedule_slippage:
+      green_avg_max: 5
+      green_single_max: 10
+      amber_avg_max: 15
+      amber_single_max: 25
+
+    milestone_health:
+      green_at_risk_max: 0
+      amber_at_risk_max: 1
+
+    blocker_density:
+      green_blocked_max: 2
+      amber_blocked_max: 5
+      green_cascade_max: 0
+      amber_cascade_max: 1
+
+    dependency_risk:
+      green_overdue_max: 0
+      amber_overdue_max: 2
+      amber_days_max: 10
+
+# keywords to identify external/customer teams vs internal
+external_keywords:
+  - "UniSan"
+  - "Titan"
+  - "OTK"
+  - "Customer"
+
+internal_keywords:
+  - "Zycus"
+
+# milestone detection
+milestone_indicators:
+  - "Go-Live"
+  - "Go /No-go"
+  - "Sign off"
+  - "Completion"
+  - "Check Point"
+  - "UAT Completion"
+  - "KPI Sign-off"
+
+# how far ahead to look for upcoming milestones
+milestone_lookahead_days: 30
+
+# LLM settings
+llm:
+  model: "gemini-2.0-flash"
+  provider: "google"
